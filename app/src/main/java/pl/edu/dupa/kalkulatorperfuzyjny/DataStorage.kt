@@ -37,7 +37,7 @@ class DataStorage {
 
         private val volumeIndexes: Array<VolumeIndex> = arrayOf(
                 VolumeIndex(0, 10, 85),
-                VolumeIndex(10, ,20, 80),
+                VolumeIndex(10, 20, 80),
                 VolumeIndex(20, 30, 75),
                 VolumeIndex(30, 40, 70),
                 VolumeIndex(40, 50, 65),
@@ -70,7 +70,7 @@ class DataStorage {
             return null
         }
 
-        fun getVolumeIndex(bodyWeight: Int): VolumeIndex {
+        fun getVolumeIndex(bodyWeight: Int): VolumeIndex? {
             var estimatedIndex = Math.round(-0.5 * bodyWeight + 85).toInt()
             if(estimatedIndex >= volumeIndexes.size)
                 estimatedIndex = volumeIndexes.size - 1
@@ -80,7 +80,7 @@ class DataStorage {
                 return volumeIndexes[estimatedIndex-1]
             if(estimatedIndex < volumeIndexes.size-1 && volumeIndexes[estimatedIndex+1].minBodyWeight <= bodyWeight && volumeIndexes[estimatedIndex+1].maxBodyWeight >= bodyWeight)
                 return volumeIndexes[estimatedIndex+1]
-
+            return null
         }
     }
 
