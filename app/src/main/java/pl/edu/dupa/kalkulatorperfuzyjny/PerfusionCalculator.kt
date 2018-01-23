@@ -35,14 +35,14 @@ class PerfusionCalculator {
         return primingVolume / (tbv + primingVolume) * 100
     }
 
-    fun calculateKKCZ(patientHematocrit: Int, primingVolume: Int, bodyWeight: Int): Double? {
+    fun calculateKKCZ(primingVolume: Int, bodyWeight: Int, patientHematocrit: Int): Double? {
         val tbv = calculateCirculatingBloodVolume(bodyWeight) ?: return null
-        val htCpb = (patientHematocrit * tbv) / (tbv + primingVolume)
-        return (0.01 * htCpb * (primingVolume + tbv) - tbv * patientHematocrit) / 0.7
+        val htCPB = calculateHtCPB(bodyWeight, patientHematocrit, primingVolume) ?: return null
+        return (0.01 * htCPB * (primingVolume + tbv) - tbv * patientHematocrit) / 0.7
     }
 
-    fun calculateHt(kkcz: Double): Double {
-
-        return 0.toDouble()
+    fun calculateHtCPB(bodyWeight: Int, patientHematocrit: Int, primingVolume: Int): Double? {
+        val tbv = calculateCirculatingBloodVolume(bodyWeight) ?: return null
+        return (patientHematocrit * tbv) / (tbv + primingVolume)
     }
 }

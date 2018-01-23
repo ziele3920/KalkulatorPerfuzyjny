@@ -71,7 +71,7 @@ class DataStorage {
         }
 
         fun getVolumeIndex(bodyWeight: Int): VolumeIndex? {
-            var estimatedIndex = Math.round(-0.5 * bodyWeight + 85).toInt()
+            var estimatedIndex = Math.round(0.1 * bodyWeight).toInt()
             if(estimatedIndex >= volumeIndexes.size)
                 estimatedIndex = volumeIndexes.size - 1
             if(volumeIndexes[estimatedIndex].minBodyWeight <= bodyWeight && volumeIndexes[estimatedIndex].maxBodyWeight >= bodyWeight)
