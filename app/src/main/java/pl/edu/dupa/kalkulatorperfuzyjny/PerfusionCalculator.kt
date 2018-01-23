@@ -38,7 +38,7 @@ class PerfusionCalculator {
     fun calculateKKCZ(primingVolume: Int, bodyWeight: Int, patientHematocrit: Int): Double? {
         val tbv = calculateCirculatingBloodVolume(bodyWeight) ?: return null
         val htCPB = calculateHtCPB(bodyWeight, patientHematocrit, primingVolume) ?: return null
-        return (0.01 * htCPB * (primingVolume + tbv) - tbv * patientHematocrit) / 0.7
+        return (0.01 * htCPB * (primingVolume + tbv) - tbv * 0.01 * patientHematocrit) / 0.7
     }
 
     fun calculateHtCPB(bodyWeight: Int, patientHematocrit: Int, primingVolume: Int): Double? {
