@@ -3,6 +3,7 @@ package pl.edu.dupa.kalkulatorperfuzyjny
 import android.app.Activity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_insertion.*
+import pl.edu.dupa.kalkulatorperfuzyjny.R.id.textLineFluent
 
 class ActivityInsertion : Activity() {
 
@@ -40,6 +41,7 @@ class ActivityInsertion : Activity() {
                 val pumpF = calculator.calculatePumpFluentPerMin(bsa.toFloat(), bodyMass)
                 if(pumpF != null)
                     textPump.text = formatString.format(pumpF)
+                textBSA.text = formatString.format(bsa)
             }
 
             val htCPB = calculator.calculateHtCPB(bodyMass, patientHematocrit, primingVolume)
