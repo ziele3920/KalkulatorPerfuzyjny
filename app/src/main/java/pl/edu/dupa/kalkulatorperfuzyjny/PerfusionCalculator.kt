@@ -1,8 +1,5 @@
 package pl.edu.dupa.kalkulatorperfuzyjny
 
-import android.app.Activity
-
-
 /**
  * Created by Ziolo on 1/22/2018.
  */
@@ -11,7 +8,7 @@ class PerfusionCalculator {
     fun calculateBodySurfaceArea(bodyWeight: Int, bodyHeight: Int): Double {
         return Math.pow(bodyHeight.toDouble()/100, 0.725) * Math.pow(bodyWeight.toDouble(), 0.425) * 0.007184
     }
-//dupa dupiasta
+
     fun calculateVeinCannuleSize(bodyWeight: Int): VeinCanule? {
         return DataStorage.getVeinCannule(bodyWeight)
     }
@@ -21,8 +18,8 @@ class PerfusionCalculator {
     }
 
     fun calculatePumpFluentPerMin(bodySurfaceArea: Float, bodyWeight: Int): Double? {
-        val VI = DataStorage.getVolumeIndex(bodyWeight) ?: return null
-        return bodySurfaceArea * VI.Vl.toDouble()
+        val CI = DataStorage.getArteryCannule(bodyWeight) ?: return null
+        return bodySurfaceArea * CI.fluent.toDouble()
     }
 
     fun calculateCirculatingBloodVolume(bodyWeight: Int): Double? {
