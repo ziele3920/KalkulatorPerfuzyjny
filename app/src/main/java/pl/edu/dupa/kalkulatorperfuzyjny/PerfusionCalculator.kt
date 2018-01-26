@@ -9,9 +9,9 @@ import android.app.Activity
 class PerfusionCalculator {
 
     fun calculateBodySurfaceArea(bodyWeight: Int, bodyHeight: Int): Double {
-        return Math.pow(bodyHeight.toDouble()/100, 0.725) * Math.pow(bodyWeight, 0.425) * 0.007184
+        return Math.pow(bodyHeight.toDouble()/100, 0.725) * Math.pow(bodyWeight.toDouble(), 0.425) * 0.007184
     }
-
+//dupa dupiasta
     fun calculateVeinCannuleSize(bodyWeight: Int): VeinCanule? {
         return DataStorage.getVeinCannule(bodyWeight)
     }
